@@ -2,7 +2,7 @@ export const getEmails = (result) => {
   let emailList = []
   let justEmails = []
   result.emails ? Object.keys(result.emails).map(k => {
-      let email = result.emails[k].email
+      let {email} = result.emails[k]
       if(justEmails.indexOf(email) === -1) {
         emailList.push(result.emails[k])
         justEmails.push(email)
@@ -12,9 +12,7 @@ export const getEmails = (result) => {
 }
 
 export const getSummary = (result) => {
-  let { profilesParsed } = result
-  let { followersParsed } = result
-  let { emails_found } = result
+  let { profilesParsed, followersParsed, emails_found } = result
   let parsedCount = profilesParsed ? profilesParsed: followersParsed
   return {parsedCount, emails_found}
 }
